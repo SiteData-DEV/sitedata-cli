@@ -74,7 +74,7 @@ test('uses the next tag and caches a successful registry check', async () => {
     assert.deepEqual(beforeExpiry, first);
     assert.deepEqual(afterExpiry, first);
     assert.equal(first?.latestVersion, '0.0.1-next.2');
-    assert.equal(first?.installCommand, 'npm install -g @sitedata/cli@next');
+    assert.equal(first?.installCommand, 'npm install -g @sitedata-dev/cli@next');
     assert.match(renderUpdateNotice(first!), /0\.0\.1-next\.2/);
   } finally {
     await rm(directory, { recursive: true, force: true });

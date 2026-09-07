@@ -19,21 +19,21 @@ test('detects supported global package managers and builds safe commands', () =>
   assert.equal(
     detectPackageManager({
       env: { PNPM_HOME: '/opt/pnpm' },
-      executablePath: '/opt/pnpm/global/5/node_modules/@sitedata/cli/dist/bin.js',
+      executablePath: '/opt/pnpm/global/5/node_modules/@sitedata-dev/cli/dist/bin.js',
     }),
     'pnpm'
   );
   assert.deepEqual(packageManagerInstallCommand('npm', 'latest'), {
     command: 'npm',
-    args: ['install', '--global', '@sitedata/cli@latest'],
+    args: ['install', '--global', '@sitedata-dev/cli@latest'],
   });
   assert.deepEqual(packageManagerInstallCommand('yarn', 'next'), {
     command: 'yarn',
-    args: ['global', 'add', '@sitedata/cli@next'],
+    args: ['global', 'add', '@sitedata-dev/cli@next'],
   });
   assert.deepEqual(packageManagerInstallCommand('bun', 'latest'), {
     command: 'bun',
-    args: ['add', '--global', '@sitedata/cli@latest'],
+    args: ['add', '--global', '@sitedata-dev/cli@latest'],
   });
 });
 
@@ -76,7 +76,7 @@ test('installs an available update once and leaves the current process running',
     assert.equal(concurrentOldProcess.status, 'busy');
     assert.deepEqual(calls, [{
       command: 'pnpm',
-      args: ['add', '--global', '@sitedata/cli@latest'],
+      args: ['add', '--global', '@sitedata-dev/cli@latest'],
       timeoutMs: 60_000,
     }]);
     assert.match(renderAutomaticUpdate(first) ?? '', /active next run/);

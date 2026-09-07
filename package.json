@@ -1,5 +1,5 @@
 {
-  "name": "@sitedata/cli",
+  "name": "@sitedata-dev/cli",
   "version": "0.1.0",
   "description": "Official SiteData CLI for humans and AI agents",
   "keywords": [

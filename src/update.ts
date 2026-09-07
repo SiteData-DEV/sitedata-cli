@@ -119,7 +119,7 @@ export function packageManagerInstallCommand(
   manager: PackageManager,
   channel: 'latest' | 'next'
 ) {
-  const packageSpec = `@sitedata/cli@${channel}`;
+  const packageSpec = `@sitedata-dev/cli@${channel}`;
   if (manager === 'pnpm') return { command: 'pnpm', args: ['add', '--global', packageSpec] };
   if (manager === 'yarn') return { command: 'yarn', args: ['global', 'add', packageSpec] };
   if (manager === 'bun') return { command: 'bun', args: ['add', '--global', packageSpec] };

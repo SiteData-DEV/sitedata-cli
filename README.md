@@ -1,6 +1,6 @@
 # SiteData CLI
 
-[![npm version](https://img.shields.io/npm/v/@sitedata/cli.svg)](https://www.npmjs.com/package/@sitedata/cli)
+[![npm version](https://img.shields.io/npm/v/@sitedata-dev/cli.svg)](https://www.npmjs.com/package/@sitedata-dev/cli)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D20-339933.svg)](https://nodejs.org/)
 
 [English](./README.md) | [中文](./README.zh.md)
@@ -50,7 +50,7 @@ The server publishes the authoritative command Catalog. Run `sitedata list` to s
 ### Install
 
 ```bash
-npm install --global @sitedata/cli
+npm install --global @sitedata-dev/cli
 sitedata --version
 ```
 
@@ -81,7 +81,7 @@ Browser login uses the fixed public OAuth client `sitedata-cli`, resource `https
 
 ```bash
 # 1. Install
-npm install --global @sitedata/cli
+npm install --global @sitedata-dev/cli
 
 # 2. Ask the user to complete browser authorization
 sitedata login
@@ -269,6 +269,6 @@ npm pack --dry-run
 
 - [SiteData](https://sitedata.dev)
 - [SiteData MCP](https://mcp.sitedata.dev/mcp)
-- [SiteData CLI on npm](https://www.npmjs.com/package/@sitedata/cli)
+- [SiteData CLI on npm](https://www.npmjs.com/package/@sitedata-dev/cli)
 - [Source code](https://github.com/SiteData-DEV/sitedata-cli)
 - [Issue tracker](https://github.com/SiteData-DEV/sitedata-cli/issues)

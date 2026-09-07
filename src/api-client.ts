@@ -47,7 +47,7 @@ export async function callApi(options: {
     const headers: Record<string, string> = {
       accept: 'application/json',
       authorization: 'Bearer ' + options.credential,
-      'user-agent': `@sitedata/cli/${VERSION}`,
+      'user-agent': `@sitedata-dev/cli/${VERSION}`,
     };
     if (options.definition.method === 'POST') {
       headers['content-type'] = 'application/json';

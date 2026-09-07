@@ -1,6 +1,6 @@
 # SiteData CLI
 
-[![npm version](https://img.shields.io/npm/v/@sitedata/cli.svg)](https://www.npmjs.com/package/@sitedata/cli)
+[![npm version](https://img.shields.io/npm/v/@sitedata-dev/cli.svg)](https://www.npmjs.com/package/@sitedata-dev/cli)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D20-339933.svg)](https://nodejs.org/)
 
 [English](./README.md) | [中文](./README.zh.md)
@@ -50,7 +50,7 @@
 ### 安装
 
 ```bash
-npm install --global @sitedata/cli
+npm install --global @sitedata-dev/cli
 sitedata --version
 ```
 
@@ -81,7 +81,7 @@ sitedata favorites list --kind website --output json
 
 ```bash
 # 1. 安装
-npm install --global @sitedata/cli
+npm install --global @sitedata-dev/cli
 
 # 2. 请用户在浏览器中完成授权
 sitedata login
@@ -269,6 +269,6 @@ npm pack --dry-run
 
 - [SiteData](https://sitedata.dev)
 - [SiteData MCP](https://mcp.sitedata.dev/mcp)
-- [npm 上的 SiteData CLI](https://www.npmjs.com/package/@sitedata/cli)
+- [npm 上的 SiteData CLI](https://www.npmjs.com/package/@sitedata-dev/cli)
 - [源代码](https://github.com/SiteData-DEV/sitedata-cli)
 - [问题反馈](https://github.com/SiteData-DEV/sitedata-cli/issues)

@@ -3,7 +3,7 @@ import { homedir } from 'node:os';
 import { dirname, join } from 'node:path';
 
 const REGISTRY_DIST_TAGS_URL =
-  'https://registry.npmjs.org/-/package/%40sitedata%2Fcli/dist-tags';
+  'https://registry.npmjs.org/-/package/%40sitedata-dev%2Fcli/dist-tags';
 const SUCCESS_CACHE_TTL_MS = 60 * 60 * 1000;
 const FAILURE_CACHE_TTL_MS = 5 * 60 * 1000;
 const DEFAULT_TIMEOUT_MS = 3_000;
@@ -174,7 +174,7 @@ function updateInfo(
     latestVersion,
     channel,
     installCommand:
-      'npm install -g @sitedata/cli' + (channel === 'next' ? '@next' : ''),
+      'npm install -g @sitedata-dev/cli' + (channel === 'next' ? '@next' : ''),
   };
 }
 

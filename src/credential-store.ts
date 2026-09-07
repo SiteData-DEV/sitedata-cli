@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process';
 
-const SERVICE = '@sitedata/cli';
+const SERVICE = '@sitedata-dev/cli';
 const ACCOUNT = 'default';
 
 export type OAuthCredential = {
