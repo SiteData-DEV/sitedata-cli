@@ -1,0 +1,46 @@
+{
+  "name": "@sitedata/cli",
+  "version": "0.1.0",
+  "description": "Official SiteData CLI for humans and AI agents",
+  "keywords": [
+    "sitedata",
+    "cli",
+    "api",
+    "oauth",
+    "seo",
+    "ai-agent"
+  ],
+  "homepage": "https://sitedata.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiteData-DEV/sitedata-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SiteData-DEV/sitedata-cli/issues"
+  },
+  "type": "module",
+  "bin": {
+    "sitedata": "dist/bin.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.zh.md"
+  ],
+  "scripts": {
+    "build": "node scripts/clean-dist.mjs && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "check": "pnpm typecheck && pnpm test && pnpm build",
+    "release": "node scripts/release.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "packageManager": "pnpm@10.12.1"
+}
