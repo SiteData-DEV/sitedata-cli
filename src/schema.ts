@@ -15,6 +15,16 @@ function parseBoolean(value: string, name: string): boolean {
 }
 
 function parseValue(schema: JsonSchema, values: string[], name: string): unknown {
+  if (schema.type === 'object' || (schema.type === 'array' && schema.items?.type === 'object')) {
+    if (values.length !== 1) throw new UsageError('--' + toKebabCase(name) + ' requires one JSON value.');
+    let parsed: unknown;
+    try { parsed = JSON.parse(values[0] ?? ''); }
+    catch { throw new UsageError('--' + toKebabCase(name) + ' must be valid JSON.'); }
+    if (schema.type === 'object' ? parsed === null || typeof parsed !== 'object' || Array.isArray(parsed) : !Array.isArray(parsed) || !parsed.every(item => item !== null && typeof item === 'object' && !Array.isArray(item))) {
+      throw new UsageError('--' + toKebabCase(name) + ' has an invalid JSON type.');
+    }
+    return parsed;
+  }
   if (schema.type === 'array') {
     const items = values.flatMap((value) => value.split(',')).filter(Boolean);
     return items.map((value) =>

@@ -27,11 +27,17 @@ export async function callApi(options: {
   timeoutMs: number;
   fetch?: typeof fetch;
 }): Promise<ApiResponse> {
-  const url = new URL(
-    options.baseUrl.replace(/\/$/, '') + options.definition.path
-  );
+  const pathParameters = new Set<string>();
+  const path = options.definition.path.replace(/\{([A-Za-z][A-Za-z0-9_]*)\}/g, (_, key: string) => {
+    const value = options.parameters[key];
+    if (value === undefined || value === null || value === '') throw new Error('Missing path parameter: ' + key);
+    pathParameters.add(key);
+    return encodeURIComponent(String(value));
+  });
+  const parameters = Object.fromEntries(Object.entries(options.parameters).filter(([key]) => !pathParameters.has(key)));
+  const url = new URL(options.baseUrl.replace(/\/$/, '') + path);
   if (options.definition.method === 'GET') {
-    for (const [name, value] of Object.entries(options.parameters)) {
+    for (const [name, value] of Object.entries(parameters)) {
       if (value === undefined || value === null || value === '') continue;
       if (Array.isArray(value)) {
         for (const item of value) url.searchParams.append(name, String(item));
@@ -56,7 +62,7 @@ export async function callApi(options: {
       method: options.definition.method,
       headers,
       ...(options.definition.method === 'POST'
-        ? { body: JSON.stringify(options.parameters) }
+        ? { body: JSON.stringify(parameters) }
         : {}),
       signal: controller.signal,
     });

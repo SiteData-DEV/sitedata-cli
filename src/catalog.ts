@@ -45,6 +45,10 @@ function isSchema(value: unknown): value is JsonSchema {
   return true;
 }
 
+function isPublicPath(path: string): boolean {
+  return /^\/api\/v1\/(?:[a-z0-9_-]+|\{[A-Za-z][A-Za-z0-9_]*\})(?:\/(?:[a-z0-9_-]+|\{[A-Za-z][A-Za-z0-9_]*\}))*$/.test(path);
+}
+
 function isDefinition(value: unknown): value is PublicApiDefinition {
   if (!isRecord(value)) return false;
   return (
@@ -52,12 +56,12 @@ function isDefinition(value: unknown): value is PublicApiDefinition {
     typeof value.id === 'string' &&
     /^[a-z0-9-]+$/.test(value.id) &&
     typeof value.path === 'string' &&
-    /^\/api\/v1\/[a-z0-9/_-]+$/.test(value.path) &&
+    (isPublicPath(value.path)) &&
     typeof value.mcpName === 'string' &&
     /^sitedata_[a-z0-9_]+$/.test(value.mcpName) &&
     typeof value.description === 'string' &&
     typeof value.readOnly === 'boolean' &&
-    isSchema(value.inputSchema)
+    isSchema(value.inputSchema) && value.inputSchema.type === 'object'
   );
 }
 
@@ -70,6 +74,9 @@ export function parseCatalog(value: unknown): readonly PublicApiDefinition[] {
   }
   if (value.data.apis.length === 0 || !value.data.apis.every(isDefinition)) {
     throw new Error('Catalog response contains an invalid API definition.');
+  }
+  if (new Set(value.data.apis.map(item => item.mcpName)).size !== value.data.apis.length) {
+    throw new Error('Catalog response contains duplicate MCP tool names.');
   }
   return value.data.apis;
 }

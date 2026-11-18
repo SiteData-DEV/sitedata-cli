@@ -33,7 +33,7 @@ test('stable and unrelated prerelease versions use production', () => {
 });
 
 test('current package version selects the exported defaults', () => {
-  assert.equal(VERSION, '0.1.0');
+  assert.equal(VERSION, '0.1.1');
   assert.equal(DEFAULT_ENDPOINTS.oauthIssuer, 'https://sitedata.dev');
   assert.equal(DEFAULT_ENDPOINTS.oauthResource, 'https://sitedata.dev');
   assert.equal(DEFAULT_ENDPOINTS.apiBaseUrl, 'https://sitedata.dev');
